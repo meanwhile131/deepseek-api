@@ -1,0 +1,12 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "deepseek-api"
+dependencies = [
+    "requests",
+    "numpy",
+    "wasmtime"
+]
+version = "0.0.1"
