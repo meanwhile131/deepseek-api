@@ -14,5 +14,11 @@ dynamic = ["version"]
 license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
 
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+]
+
 [tool.hatch.version]
 source = "vcs"
