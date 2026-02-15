@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling >= 1.26"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
@@ -9,4 +9,7 @@ dependencies = [
     "numpy",
     "wasmtime"
 ]
-version = "0.0.1"
+dynamic = ["version"]
+
+[tool.hatch.version]
+source = "vcs"
