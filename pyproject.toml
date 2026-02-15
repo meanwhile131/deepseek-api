@@ -10,6 +10,8 @@ dependencies = [
     "wasmtime"
 ]
 dynamic = ["version"]
+license = "GPL-3.0-or-later"
+license-files = ["LICEN[CS]E*"]
 
 [tool.hatch.version]
 source = "vcs"
