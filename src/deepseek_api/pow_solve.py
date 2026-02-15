@@ -2,15 +2,18 @@ import wasmtime
 import numpy as np
 import base64
 import json
+from .wasm_download import get_wasm_path
 
 
 class POWSolver:
-    def __init__(self, wasm_path: str):
+    def __init__(self, wasm_path: str = None):
+        if not wasm_path:
+            wasm_path = get_wasm_path()
         with open(wasm_path, "rb") as f:
-            wat = f.read()
+            wasm = f.read()
 
         engine = wasmtime.Engine()
-        module = wasmtime.Module(engine, wat)
+        module = wasmtime.Module(engine, wasm)
         self.store = wasmtime.Store(engine)
         instance = wasmtime.Instance(self.store, module, [])
 

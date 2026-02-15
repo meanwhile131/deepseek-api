@@ -7,7 +7,8 @@ name = "deepseek-api"
 dependencies = [
     "requests",
     "numpy",
-    "wasmtime"
+    "wasmtime",
+    "platformdirs"
 ]
 dynamic = ["version"]
 license = "GPL-3.0-or-later"
