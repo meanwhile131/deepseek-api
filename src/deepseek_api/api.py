@@ -1,4 +1,4 @@
-from pow_solve import POWSolver
+from .pow_solve import POWSolver
 import requests
 import json
 
