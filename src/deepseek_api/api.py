@@ -66,8 +66,10 @@ class DeepSeekAPI:
                 data["o"] = "APPEND"
             self._handle_property_update(message, data)
             current_property = data["p"]
-
-        return message["response"]
+        try:
+            return message["response"]
+        except KeyError:
+            raise RuntimeError(f"No 'response' key in message: {message}")
 
     def complete_stream(self, chat_id: str, prompt: str, parent_message_id: int = None, search=False, thinking=False):
         """Generator that yields chunks of the streaming response.
@@ -117,7 +119,10 @@ class DeepSeekAPI:
                 yield {"type": "content", "content": v}
             elif path == "response/thinking_content":
                 yield {"type": "thinking", "content": v}
-        yield {"type": "message", "content": message["response"]}
+        try:
+            yield {"type": "message", "content": message["response"]}
+        except KeyError:
+            raise RuntimeError(f"No 'response' key in message: {message}")
 
     def _handle_property_update(self, obj: dict, update: dict):
         keys = update["p"].split("/")
